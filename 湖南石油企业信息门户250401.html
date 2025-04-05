@@ -1,0 +1,1195 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>湖南石油企业信息门户</title>
+    <style>
+        :root {
+            --primary-color: #EA0029;
+            --primary-gray: #EA0029;
+            --primary-dark: #151515;
+            --primary-light: #8f8f8f;
+            --text-color: #333;
+            --light-text: #f5f5f5;
+            --bg-color: #f9f9f9;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Microsoft YaHei', Arial, sans-serif;
+        }
+
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            line-height: 1.6;
+        }
+
+        header {
+            background-color: var(--primary-color);
+            color: var(--light-text);
+            padding: 20px 0;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 28px;
+            font-weight: bold;
+        }
+
+        .search-box {
+            width: 50%;
+        }
+
+        .search-box input {
+            width: 100%;
+            padding: 10px 15px;
+            border: none;
+            border-radius: 4px;
+            font-size: 16px;
+        }
+
+        .search-box input:focus {
+            outline: 2px solid var(--primary-dark);
+        }
+
+        nav {
+            background-color: var(--primary-dark);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .nav-menu {
+            display: flex;
+            list-style: none;
+            overflow-x: auto;
+            white-space: nowrap;
+            padding: 15px 0;
+        }
+
+        .nav-menu li {
+            margin-right: 15px;
+        }
+
+        .nav-menu a {
+            color: var(--light-text);
+            text-decoration: none;
+            padding: 8px 15px;
+            border-radius: 4px;
+            transition: background-color 0.3s;
+        }
+
+        .nav-menu a:hover {
+            background-color: rgba(255,255,255,0.2);
+        }
+
+        .nav-menu a.active {
+            background-color: var(--primary-light);
+            color: var(--primary-dark);
+            font-weight: bold;
+        }
+
+        main {
+            padding: 30px 0;
+        }
+
+        .category {
+            margin-bottom: 20px;
+            background-color: white;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+            overflow: hidden;
+        }
+
+        .category-header {
+            background-color: var(--primary-gray);
+            color: var(--light-text);
+            padding: 15px 20px;
+            font-size: 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .category-header h2 {
+            font-weight: normal;
+        }
+
+        .category-content {
+            padding: 20px;
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            gap: 15px;
+        }
+
+        .site-item {
+            padding: 10px;
+            border-radius: 4px;
+            transition: all 0.3s;
+        }
+
+        .site-item:hover {
+            background-color: var(--primary-light);
+            transform: translateY(-3px);
+        }
+
+        .site-item a {
+            text-decoration: none;
+            color: var(--text-color);
+            display: flex;
+            align-items: center;
+        }
+
+        .site-item img {
+            width: 16px;
+            height: 16px;
+            margin-right: 8px;
+        }
+
+        .site-item .site-name {
+            font-weight: bold;
+        }
+
+        .site-item .site-desc {
+            font-size: 12px;
+            color: #666;
+            margin-top: 3px;
+        }
+
+        footer {
+            background-color: var(--primary-dark);
+            color: var(--light-text);
+            text-align: center;
+            padding: 20px 0;
+            margin-top: 30px;
+        }
+
+        @media (max-width: 768px) {
+            .header-content {
+                flex-direction: column;
+            }
+
+            .logo {
+                margin-bottom: 15px;
+            }
+
+            .search-box {
+                width: 100%;
+            }
+
+            .category-content {
+                grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+            }
+        }
+    </style>
+</head>
+<body>
+<header>
+    <div class="container">
+        <div class="header-content">
+            <div class="logo">湖南石油企业信息门户</div>
+            <div class="search-box">
+                <input type="text" placeholder="搜索网址或关键词..." id="searchInput">
+            </div>
+        </div>
+    </div>
+</header>
+
+<nav>
+    <div class="container">
+        <ul class="nav-menu" id="navMenu">
+            <li><a href="#search" class="active">AI搜索</a></li>
+            <li><a href="#floor_2">加能站</a></li>
+            <li><a href="#floor_3">综合</a></li>
+            <li><a href="#floor_4">零售</a></li>
+            <li><a href="#floor_5">易捷</a></li>
+            <li><a href="#floor_6">HSE</a></li>
+            <li><a href="#floor_7">发规</a></li>
+            <li><a href="#floor_8">商流</a></li>
+            <li><a href="#floor_9">党政</a></li>
+            <li><a href="#floor_10">人事</a></li>
+            <li><a href="#floor_11">运维</a></li>
+            <li><a href="#floor_12">企网</a></li>
+
+        </ul>
+    </div>
+</nav>
+<!-- 第一层网址导航 -->
+<main class="container">
+    <section class="category" id="search">
+        <div class="category-header">
+            <h5>01 AI搜索</h5>
+        </div>
+        <div class="category-content">
+            <div class="site-item">
+                <a href="https://www.deepseek.com" target="_blank">
+                    <img src="https://www.deepseek.com/favicon.ico" alt="">
+                    <div>
+                        <div class="site-name">DEEPSEEK</div>
+                        <div class="site-desc">全球领先的中国AI引擎</div>
+                    </div>
+                </a>
+            </div>
+            <div class="site-item">
+                <a href="https://tongyi.aliyun.com/qianwen" target="_blank">
+                    <img src="https://www.alibaba.com/favicon.ico" alt="">
+                    <div>
+                        <div class="site-name">通义千问</div>
+                        <div class="site-desc">询问Qwen，了解更多</div>
+                    </div>
+                </a>
+            </div>
+            <div class="site-item">
+                <a href="https://yiyan.baidu.com/" target="_blank">
+                    <img src="https://www.baidu.com/favicon.ico" alt="">
+                    <div>
+                        <div class="site-name">文心一言</div>
+                        <div class="site-desc">百度文心一言你的智能伙伴，</div>
+                    </div>
+                </a>
+            </div>
+            <div class="site-item">
+                <a href="https://www.doubao.com/" target="_blank">
+                    <?xml version="1.0" encoding="UTF-8"?><svg width="16" height="16" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M24 4L18 10H10V18L4 24L10 30V38H18L24 44L30 38H38V30L44 24L38 18V10H30L24 4Z" fill="none" stroke="#333" stroke-width="4" stroke-linejoin="round"/><path d="M24 30C27.3137 30 30 27.3137 30 24C30 20.6863 27.3137 18 24 18C20.6863 18 18 20.6863 18 24C18 27.3137 20.6863 30 24 30Z" fill="none" stroke="#333" stroke-width="4" stroke-linejoin="round"/></svg>
+                    <div>
+                        <div class="site-name">豆包</div>
+                        <div class="site-desc">字节跳动豆包，能帮你</div>
+                    </div>
+                </a>
+            </div>
+            <div class="site-item">
+                <a href="https://yuanbao.tencent.com/" target="_blank">
+                    <img src="https://www.qq.com/favicon.ico" alt="">
+                    <div>
+                        <div class="site-name">腾讯元宝</div>
+                        <div class="site-desc">元宝，你身边的智能助手</div>
+                    </div>
+                </a>
+            </div>
+            <div class="site-item">
+                <a href="https://www.bing.com" target="_blank">
+                    <img src="https://www.bing.com/favicon.ico" alt="">
+                    <div>
+                        <div class="site-name">Bing</div>
+                        <div class="site-desc">微软推出的搜索引擎</div>
+                    </div>
+                </a>
+            </div>
+            <div class="site-item">
+                <a href="https://www.baidu.com" target="_blank">
+                    <img src="https://www.baidu.com/favicon.ico" alt="">
+                    <div>
+                        <div class="site-name">百度</div>
+                        <div class="site-desc">百度一下，你就知道</div>
+                    </div>
+                </a>
+            </div>
+            <div class="site-item">
+                <a href="https://data.stats.gov.cn" target="_blank">
+                    <img src="https://www.gov.cn/favicon.ico" alt="">
+                    <div>
+                        <div class="site-name">国家数据中心</div>
+                        <div class="site-desc">国家统计局国家数据查询</div>
+                    </div>
+                </a>
+            </div>
+            <div class="site-item">
+                <a href="https://index.baidu.com/v2/index.html#/" target="_blank">
+                    <img src="https://www.baidu.com/favicon.ico" alt="">
+                    <div>
+                        <div class="site-name">百度指数</div>
+                        <div class="site-desc">AI引导数据革命</div>
+                    </div>
+                </a>
+            </div>
+
+        </div>
+    </section>
+    <!-- 第二层网址导航 -->
+    <section class="category" id="floor_2">
+        <div class="category-header">
+            <h5>02 加能站系统</h5>
+        </div>
+        <div class="category-content">
+            <div class="site-item">
+                <a href="http://10.190.1.110/irj/portal" target="_blank">
+                    <img src="http://10.190.1.110/irj/portalapps/favicon.ico" alt="">
+                    <div>
+                        <div class="site-name">零售管理系统</div>
+                        <div class="site-desc">中国石化零售管理系统</div>
+                    </div>
+                </a>
+            </div>
+            <div class="site-item">
+                <a href="https://xssjzx.sinopec.com/" target="_blank">
+                    <img src="https://xssjzx.sinopec.com//favicon.ico" alt="">
+                    <div>
+                        <div class="site-name">经营数据管理中心</div>
+                        <div class="site-desc">销售公司经营数据管理中心</div>
+                    </div>
+                </a>
+            </div>
+            <div class="site-item">
+                <a href="https://10.249.203.241/POS/index.jsp" target="_blank">
+                    <img src="https://10.249.203.241/POS/index.jsp/favicon.ico" alt="">
+                    <div>
+                        <div class="site-name">资金监管系统</div>
+                        <div class="site-desc">销售企业资金监管系统</div>
+                    </div>
+                </a>
+            </div>
+            <div class="site-item">
+                <a href="http://10.190.1.239/" target="_blank">
+                    <img src="http://10.190.1.239/favicon.ico" alt="">
+                    <div>
+                        <div class="site-name">普通发票管理系统</div>
+                        <div class="site-desc">销售企业普通发票管理系统</div>
+                    </div>
+                </a>
+            </div>
+            <div class="site-item">
+                <a href="https://petrol.amap.com/#/" target="_blank">
+                    <img src="https://petrol.amap.com/favicon.ico" alt="">
+                    <div>
+                        <div class="site-name">加油站运营分析平台</div>
+                        <div class="site-desc">SINOPEC&高德地图</div>
+                    </div>
+                </a>
+            </div>
+            <div class="site-item">
+                <a href="http://10.190.1.203:9205/smartbi/vision/index.jsp" target="_blank">
+                    <img src="http://10.190.1.203:9205/favicon.ico" alt="">
+                    <div>
+                        <div class="site-name">经营分析平台</div>
+                        <div class="site-desc">湖南石油经营分析平台</div>
+                    </div>
+                </a>
+            </div>
+            <div class="site-item">
+                <a href="http://10.248.235.183:9094/" target="_blank">
+                    <img src="http://10.248.235.183:9094/favicon.ico" alt="">
+                    <div>
+                        <div class="site-name">易服便利店后台管理</div>
+                        <div class="site-desc">易服便利店后台管理</div>
+                    </div>
+                </a>
+            </div>
+            <div class="site-item">
+                <a href="https://96368.hntobacco.com/" target="_blank">
+                    <img src="https://96368.hntobacco.com/favicon.ico" alt="">
+                    <div>
+                        <div class="site-name">湖南卷烟订货平台</div>
+                        <div class="site-desc">湖南卷烟订货平台</div>
+                    </div>
+                </a>
+            </div>
+            <div class="site-item">
+                <a href="http://safety.sinopec.com" target="_blank">
+                    <img src="http://www.sinopecnews.com.cn/favicon.ico" alt="">
+                    <div>
+                        <div class="site-name">安全信息管理系统</div>
+                        <div class="site-desc">中国石化安全信息管理系统</div>
+                    </div>
+                </a>
+            </div>
+            <div class="site-item">
+                <a href="http://10.190.1.162:8080/" target="_blank">
+                    <img src="http://www.sinopecnews.com.cn/favicon.ico" alt="">
+                    <div>
+                        <div class="site-name">液位仪深化应用平台</div>
+                        <div class="site-desc">液位仪深化应用省级中心平台</div>
+                    </div>
+                </a>
+            </div>
+            <div class="site-item">
+                <a href="https://10.247.48.107/User/Login" target="_blank">
+                    <img src="https://10.247.48.107/User/Login/favicon.ico" alt="">
+                    <div>
+                        <div class="site-name">智能锁控系统</div>
+                        <div class="site-desc">湖南石油电子铅封系统</div>
+                    </div>
+                </a>
+            </div>
+            <div class="site-item">
+                <a href="https://cardweb.salecard.sinopec.com/card/" target="_blank">
+                    <img src="https://cardweb.salecard.sinopec.com/card/favicon.ico" alt="">
+                    <div>
+                        <div class="site-name">加油卡系统</div>
+                        <div class="site-desc">中国石化新加油卡系统</div>
+                    </div>
+                </a>
+            </div>
+            <div class="site-item">
+                <a href="https://ewcc.sinopec.com/" target="_blank">
+                    <img src="https://ewcc.sinopec.com/favicon.ico" alt="">
+                    <div>
+                        <div class="site-name">石化钱包云中心</div>
+                        <div class="site-desc">中国石化钱包云中心</div>
+                    </div>
+                </a>
+            </div>
+            <div class="site-item">
+                <a href="http://10.248.232.201:8080/pc/#/supervision/homePage" target="_blank">
+                    <img src="http://10.248.232.201:8080/favicon.ico" alt="">
+                    <div>
+                        <div class="site-name">油品中心</div>
+                        <div class="site-desc">中国石化油品中心</div>
+                    </div>
+                </a>
+            </div>
+            <div class="site-item">
+                <a href="http://crm.sinopec.com/mainAction/main.action" target="_blank">
+                    <img src="http://crm.sinopec.com/favicon.ico" alt="">
+                    <div>
+                        <div class="site-name">客户关系管理系统</div>
+                        <div class="site-desc">客户关系（crm）管理系统</div>
+                    </div>
+                </a>
+            </div>
+            <div class="site-item">
+                <a href="https://10.248.192.54/bmps/console.action" target="_blank">
+                    <img src="https://10.248.192.54/favicon.ico" alt="">
+                    <div>
+                        <div class="site-name">加油卡网上营业厅后台</div>
+                        <div class="site-desc">加油卡网上营业厅后台管理</div>
+                    </div>
+                </a>
+            </div>
+            <div class="site-item">
+                <a href="http://10.190.1.203:9205/smartbi/vision/index.jsp" target="_blank">
+                    <img src="http://10.190.1.203:9205/smartbi/vision/index.jsp/favicon.ico" alt="">
+                    <div>
+                        <div class="site-name">加能站集成账表册</div>
+                        <div class="site-desc">湖南SMARTBI加能站集成账表册</div>
+                    </div>
+                </a>
+            </div>
+            <div class="site-item">
+                <a href="https://newits.sinopec.com/#/newportal" target="_blank">
+                    <img src="https://newits.sinopec.com/#/newportal/favicon.ico" alt="">
+                    <div>
+                        <div class="site-name">一体化运维服务门户</div>
+                        <div class="site-desc">中国石化一体化运维服务门户</div>
+                    </div>
+                </a>
+            </div>
+            <div class="site-item">
+                <a href="https://idm.sinopec.com/" target="_blank">
+                    <img src="https://idm.sinopec.com/favicon.ico" alt="">
+                    <div>
+                        <div class="site-name">中国石化统一身份管理</div>
+                        <div class="site-desc">密码修改个人信息查询</div>
+                    </div>
+                </a>
+            </div>
+            <div class="site-item">
+                <a href="http://10.1.4.10/Pages/default.aspx" target="_blank">
+                    <img src="http://10.1.4.10/Pages/default.aspx/favicon.ico" alt="">
+                    <div>
+                        <div class="site-name">集团公司信息系统导航</div>
+                        <div class="site-desc">集团公司信息系统导航</div>
+                    </div>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- 第三层网址导航 -->
+
+    <section class="category" id="floor_3">
+        <div class="category-header">
+            <h5>03 综合管理</h5>
+        </div>
+        <div class="category-content">
+            <div class="site-item">
+                <a href="http://hnsy.oa.sinopec.com/" target="_blank">
+                    <img src="http://hnsy.oa.sinopec.com/favicon.ico" alt="">
+                    <div>
+                        <div class="site-name">OA协同办公平台</div>
+                        <div class="site-desc">湖南石油OA协同办公平台</div>
+                    </div>
+                </a>
+            </div>
+            <div class="site-item">
+                <a href="https://cmis.sinopec.com" target="_blank">
+                    <img src="https://cmis.sinopec.com/favicon.ico" alt="">
+                    <div>
+                        <div class="site-name">合同管理信息系统</div>
+                        <div class="site-desc">中国石化合同管理信息系统</div>
+                    </div>
+                </a>
+            </div>
+            <div class="site-item">
+                <a href="http://fss.sinopec.com/" target="_blank">
+                    <img src="http://fss.sinopec.com/favicon.ico" alt="">
+                    <div>
+                        <div class="site-name">财务共享自助门户</div>
+                        <div class="site-desc">中国石化财务共享自助门户</div>
+                    </div>
+                </a>
+            </div>
+            <div class="site-item">
+                <a href="https://lcrs.sinopec.com/lcrs-portal-vue/#" target="_blank">
+                    <img src="https://lcrs.sinopec.com/favicon.ico" alt="">
+                    <div>
+                        <div class="site-name">法制合规管理系统</div>
+                        <div class="site-desc">内控管理系统</div>
+                    </div>
+                </a>
+            </div>
+            <div class="site-item">
+                <a href="https://serp.sinopec.com/irj/portal" target="_blank">
+                    <img src="https://serp.sinopec.com/irj/portal/favicon.ico" alt="">
+                    <div>
+                        <div class="site-name">ERP系统</div>
+                        <div class="site-desc">中国石化ERP系统</div>
+                    </div>
+                </a>
+            </div>
+            <div class="site-item">
+                <a href="http://10.190.15.131:9505/oaims/index.do" target="_blank">
+                    <img src="http://10.190.15.131:9505/oaims/index.do/favicon.ico" alt="">
+                    <div>
+                        <div class="site-name">办公综合管理系统</div>
+                        <div class="site-desc">湖南办公综合管理系统</div>
+                    </div>
+                </a>
+            </div>
+            <div class="site-item">
+                <a href="https://idm.sinopec.com/" target="_blank">
+                    <img src="https://idm.sinopec.com/favicon.ico" alt="">
+                    <div>
+                        <div class="site-name">统一身份管理</div>
+                        <div class="site-desc">密码修改个人信息查询</div>
+                    </div>
+                </a>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- 第四层网址导航 -->
+    <section class="category" id="floor_4">
+        <div class="category-header">
+            <h5>04 零售管理</h5>
+        </div>
+        <div class="category-content">
+            <div class="site-item">
+                <a href="http://10.190.1.203:9205/smartbi/vision/index.jsp" target="_blank">
+                    <img src="http://10.190.1.203:9205/smartbi/vision/index.jsp/favicon.ico" alt="">
+                    <div>
+                        <div class="site-name">SMARTBI经营分析平台</div>
+                        <div class="site-desc">湖南石油经营分析平台</div>
+                    </div>
+                </a>
+            </div>
+            <div class="site-item">
+                <a href="https://xszhyy.sinopec.com/irj/portal" target="_blank">
+                    <img src="https://xszhyy.sinopec.com/irj/portal/favicon.ico" alt="">
+                    <div>
+                        <div class="site-name">BW系统</div>
+                        <div class="site-desc">销售事业部经营管理分析系统</div>
+                    </div>
+                </a>
+            </div>
+            <div class="site-item">
+                <a href="http://10.190.1.162:8080/" target="_blank">
+                    <img src="http://10.190.1.162:8080/favicon.ico" alt="">
+                    <div>
+                        <div class="site-name">液位仪深化应用平台</div>
+                        <div class="site-desc">液位仪深化应用省级中心平台</div>
+                    </div>
+                </a>
+            </div>
+            <div class="site-item">
+                <a href="https://petrol.amap.com/#/" target="_blank">
+                    <img src="https://www.amap.com/favicon.ico" alt="">
+                    <div>
+                        <div class="site-name">加油站运营分析平台</div>
+                        <div class="site-desc">SINOPEC&高德地图</div>
+                    </div>
+                </a>
+            </div>
+            <div class="site-item">
+                <a href="http://10.5.177.1/system/sysController/login" target="_blank">
+                    <img src="http://10.5.177.1/system/sysController/login/favicon.ico" alt="">
+                    <div>
+                        <div class="site-name">充值卡及易捷卡系统</div>
+                        <div class="site-desc">充值卡及易捷卡系统</div>
+                    </div>
+                </a>
+            </div>
+            <div class="site-item">
+                <a href="http://10.190.224.203" target="_blank">
+                    <img src="http://10.190.224.203/favicon.ico" alt="">
+                    <div>
+                        <div class="site-name">原加油卡查询系统</div>
+                        <div class="site-desc">中国石化原加油卡查询系统</div>
+                    </div>
+                </a>
+            </div>
+            <div class="site-item">
+                <a href="https://lmkbi.95155.com/bi-system/#/login" target="_blank">
+                    <img src="https://www.95155.com/favicon.ico" alt="">
+                    <div>
+                        <div class="site-name">货车联名卡数据管理平台</div>
+                        <div class="site-desc">SINOPEC&中交兴路</div>
+                    </div>
+                </a>
+            </div>
+            <div class="site-item">
+                <a href="https://cardrpt.salecard.sinopec.com/sinorpt/index.jsp" target="_blank">
+                    <img src="https://cardrpt.salecard.sinopec.com/sinorpt/index.jsp/favicon.ico" alt="">
+                    <div>
+                        <div class="site-name">新加油卡报表</div>
+                        <div class="site-desc">新加油卡报表系统</div>
+                    </div>
+                </a>
+            </div>
+            <div class="site-item">
+                <a href="https://hunanweb.hnsy.sinopec.com/" target="_blank">
+                    <img src="https://hunanweb.hnsy.sinopec.com/favicon.ico" alt="">
+                    <div>
+                        <div class="site-name">互联网营销运营平台</div>
+                        <div class="site-desc">互联网营销-运营平台</div>
+                    </div>
+                </a>
+            </div>
+            <div class="site-item">
+                <a href="https://wx.zfshijue.com/" target="_blank">
+                    <img src="https://wx.zfshijue.com/favicon.ico" alt="">
+                    <div>
+                        <div class="site-name">石化黄页</div>
+                        <div class="site-desc">石化油站黄页管理后台</div>
+                    </div>
+                </a>
+            </div>
+            <div class="site-item">
+                <a href="https://callcenter.xsgs.sinopec.com:9443/" target="_blank">
+                    <img src="https://callcenter.xsgs.sinopec.com:9443/favicon.ico" alt="">
+                    <div>
+                        <div class="site-name">中国石化云客服</div>
+                        <div class="site-desc">“一听”</div>
+                    </div>
+                </a>
+            </div>
+            <div class="site-item">
+                <a href="https://ewcc.sinopec.com" target="_blank">
+                    <img src="https://ewcc.sinopec.com/favicon.ico" alt="">
+                    <div>
+                        <div class="site-name">石化钱包云中心</div>
+                        <div class="site-desc">“一看”</div>
+                    </div>
+                </a>
+            </div>
+            <div class="site-item">
+                <a href="https://ddgl.sinopec.com/pc/#/supervision/homePage" target="_blank">
+                    <img src="https://ddgl.sinopec.com/pc/#/supervision/homePage/favicon.ico" alt="">
+                    <div>
+                        <div class="site-name">督导管理系统</div>
+                        <div class="site-desc">销售公司督导管理系统</div>
+                    </div>
+                </a>
+            </div>
+            <div class="site-item">
+                <a href="https://yptx.gdsz.sinopec.com/pc/statistics" target="_blank">
+                    <img src="https://yptx.gdsz.sinopec.com/pc/statistics/favicon.ico" alt="">
+                    <div>
+                        <div class="site-name">油品脱销报警系统</div>
+                        <div class="site-desc">油品脱销报警系统</div>
+                    </div>
+                </a>
+            </div>
+            <div class="site-item">
+                <a href="http://10.5.85.20/" target="_blank">
+                    <img src="http://10.5.85.20/favicon.ico" alt="">
+                    <div>
+                        <div class="site-name">增值税发票管理系统</div>
+                        <div class="site-desc">增值税发票管理系统</div>
+                    </div>
+                </a>
+            </div>
+            <div class="site-item">
+                <a href="https://sso-admin.bmp.sinopec.com/" target="_blank">
+                    <img src="https://sso-admin.bmp.sinopec.com/favicon.ico" alt="">
+                    <div>
+                        <div class="site-name">数智销售应用中心</div>
+                        <div class="site-desc">数智销售应用中心</div>
+                    </div>
+                </a>
+            </div>
+            <div class="site-item">
+                <a href="https://mp.amap.com/login?redirect=/biz/workbench" target="_blank">
+                    <img src="https://mp.amap.com/favicon.ico" alt="">
+                    <div>
+                        <div class="site-name">高德商家中心</div>
+                        <div class="site-desc">高德地图商家中心</div>
+                    </div>
+                </a>
+            </div>
+            <div class="site-item">
+                <a href="http://crm.ejoy.sinopec.com/ncmi/nindex.jsp" target="_blank">
+                    <img src="http://crm.ejoy.sinopec.com/ncmi/nindex.jsp/favicon.ico" alt="">
+                    <div>
+                        <div class="site-name">会员营销平台</div>
+                        <div class="site-desc">会员营销平台</div>
+                    </div>
+                </a>
+            </div>
+            <div class="site-item">
+                <a href="https://mdm.sinopec.com" target="_blank">
+                    <img src="https://mdm.sinopec.com/favicon.ico" alt="">
+                    <div>
+                        <div class="site-name">MDM主数据管理系统</div>
+                        <div class="site-desc">MDM主数据管理系统</div>
+                    </div>
+                </a>
+            </div>
+
+        </div>
+    </section>
+    <!-- 第五层网址导航 -->
+
+    <section class="category" id="floor_5">
+        <div class="category-header">
+            <h5>05 易捷非油品</h5>
+        </div>
+        <div class="category-content">
+          <div class="site-item">
+                <a href="http://10.248.235.183:9094/" target="_blank">
+                    <img src="http://10.248.235.183:9094/favicon.ico" alt="">
+                    <div>
+                        <div class="site-name">易服便利店后台管理</div>
+                        <div class="site-desc">易服便利店后台管理</div>
+                    </div>
+                </a>
+            </div>
+            <div class="site-item">
+                <a href="https://ejoy.sinopec.com/app/admin/nindex.jsp" target="_blank">
+                    <img src="https://ejoy.sinopec.com/app/admin/nindex.jsp/favicon.ico" alt="">
+                    <div>
+                        <div class="site-name">非油品业务经营管理系统</div>
+                        <div class="site-desc">新一代非油品业务经营管理系统</div>
+                    </div>
+                </a>
+            </div>
+            <div class="site-item">
+                <a href="http://10.190.1.96" target="_blank">
+                    <img src="http://10.190.1.96/favicon.ico" alt="">
+                    <div>
+                        <div class="site-name">商定天下商业管理平台</div>
+                        <div class="site-desc">海信商定天下商业管理平台</div>
+                    </div>
+                </a>
+            </div>  
+            <div class="site-item">
+                <a href="http://10.246.108.153:3333/omp/cms/loginAction!loginPage.action" target="_blank">
+                    <img src="http://10.246.108.153:3333/omp/cms/loginAction!loginPage.action/favicon.ico" alt="">
+                    <div>
+                        <div class="site-name">非油品经营管理系统</div>
+                        <div class="site-desc">非油品业务经营管理系统（旧）</div>
+                    </div>
+                </a>
+            </div>
+
+
+        </div>
+    </section>
+    <!-- 第六层网址导航 -->
+
+    <section class="category" id="floor_6">
+        <div class="category-header">
+            <h5>06 HSE数质量</h5>
+        </div>
+        <div class="category-content">
+            <div class="site-item">
+                <a href="http://safety.sinopec.com" target="_blank">
+                    <img src="http://www.sinopecnews.com.cn/favicon.ico" alt="">
+                    <div>
+                        <div class="site-name">安全信息管理系统</div>
+                        <div class="site-desc">中国石化安全信息管理系统</div>
+                    </div>
+                </a>
+            </div>
+            <div class="site-item">
+                <a href="http://10.190.1.162:8080/" target="_blank">
+                    <img src="http://www.sinopecnews.com.cn/favicon.ico" alt="">
+                    <div>
+                        <div class="site-name">液位仪深化应用平台</div>
+                        <div class="site-desc">液位仪深化应用省级中心平台</div>
+                    </div>
+                </a>
+            </div>
+            <div class="site-item">
+                <a href="http://10.190.15.41:8080/lyywy_hnsy/" target="_blank">
+                    <img src="http://www.sinopecnews.com.cn/favicon.ico" alt="">
+                    <div>
+                        <div class="site-name">合资合作站液位仪平台</div>
+                        <div class="site-desc">湖南石油合资合作站液位仪平台</div>
+                    </div>
+                </a>
+            </div>
+            <div class="site-item">
+                <a href="http://10.190.1.250:8080/ykpt" target="_blank">
+                    <img src="http://10.190.1.250:8080/ykpt/favicon.ico" alt="">
+                    <div>
+                        <div class="site-name">油库自动化系统</div>
+                        <div class="site-desc">湖南石油油库自动化管理系统</div>
+                    </div>
+                </a>
+            </div>
+            <div class="site-item">
+                <a href="http://10.190.15.60:8080/index.jsp" target="_blank">
+                    <img src="http://10.190.15.60:8080/index.jsp/favicon.ico" alt="">
+                    <div>
+                        <div class="site-name">数质量监测预警平台</div>
+                        <div class="site-desc">湖南石油数质量监测预警平台</div>
+                    </div>
+                </a>
+            </div>
+
+
+        </div>
+    </section>
+    <!-- 第七层网址导航 -->
+
+    <section class="category" id="floor_7">
+        <div class="category-header">
+            <h5>07 发展规划</h5>
+        </div>
+        <div class="category-content">
+            <div class="site-item">
+                <a href="https://erpbmp.sinopec.com" target="_blank">
+                    <img src="https://erpbmp.sinopec.com/favicon.ico" alt="">
+                    <div>
+                        <div class="site-name">ERP业务处理平台</div>
+                        <div class="site-desc">中国石化ERP业务处理平台</div>
+                    </div>
+                </a>
+            </div>
+            <div class="site-item">
+                <a href="https://wzgzt.jygl.sinopec.com/" target="_blank">
+                    <img src="https://wzgzt.jygl.sinopec.com/favicon.ico" alt="">
+                    <div>
+                        <div class="site-name">物采系统</div>
+                        <div class="site-desc">物资供应管理协同工作平台</div>
+                    </div>
+                </a>
+            </div>
+
+        </div>
+    </section>
+    <!-- 第八层网址导航 -->
+
+    <section class="category" id="floor_8">
+        <div class="category-header">
+            <h5>08 商客物流</h5>
+        </div>
+        <div class="category-content">
+            <div class="site-item">
+                <a href="https://hunanweb.hnpec.com/system/home/" target="_blank">
+                    <img src="https://hunanweb.hnpec.com/system/home/favicon.ico" alt="">
+                    <div>
+                        <div class="site-name">营销服务系统</div>
+                        <div class="site-desc">湖南石油营销服务系统</div>
+                    </div>
+                </a>
+            </div>
+            <div class="site-item">
+                <a href="https://10.247.48.107/User/Login" target="_blank">
+                    <img src="https://10.247.48.107/User/Login/favicon.ico" alt="">
+                    <div>
+                        <div class="site-name">智能锁控系统</div>
+                        <div class="site-desc">油罐车电子铅封管理系统</div>
+                    </div>
+                </a>
+            </div>
+
+        </div>
+    </section>
+    <!-- 第九层网址导航 -->
+
+    <section class="category" id="floor_9">
+        <div class="category-header">
+            <h5>09 党建政工</h5>
+        </div>
+        <div class="category-content">
+            <div class="site-item">
+                <a href="http://10.248.36.168/pmms/" target="_blank">
+                    <img src="http://10.248.36.168/pmms/favicon.ico" alt="">
+                    <div>
+                        <div class="site-name">党建信息化平台</div>
+                        <div class="site-desc">党建信息化平台</div>
+                    </div>
+                </a>
+            </div>
+
+        </div>
+    </section>
+    <!-- 第十层网址导航 -->
+
+    <section class="category" id="floor_10">
+        <div class="category-header">
+            <h5>10 人力资源</h5>
+        </div>
+        <div class="category-content">
+            <div class="site-item">
+                <a href="https://hnsy.ts.sinopec.com/" target="_blank">
+                    <img src="https://hnsy.ts.sinopec.com/favicon.ico" alt="">
+                    <div>
+                        <div class="site-name">培训管理信息系统</div>
+                        <div class="site-desc">销售企业培训管理信息系统</div>
+                    </div>
+                </a>
+            </div>
+            <div class="site-item">
+                <a href="http://10.190.1.251:8080/wqpt/login.jsp" target="_blank">
+                    <img src="http://10.190.1.251:8080/wqpt/login.jsp/favicon.ico" alt="">
+                    <div>
+                        <div class="site-name">人事合同网签系统</div>
+                        <div class="site-desc">中国石化人事合同网签系统</div>
+                    </div>
+                </a>
+            </div>
+            <div class="site-item">
+                <a href="https://sia.sinopec.com" target="_blank">
+                    <img src="https://sia.sinopec.com/favicon.ico" alt="">
+                    <div>
+                        <div class="site-name">石化网络学院</div>
+                        <div class="site-desc">中国石化网络学院</div>
+                    </div>
+                </a>
+            </div>
+            <div class="site-item">
+                <a href="https://hrzhyyn.sinopec.com/irj/portal" target="_blank">
+                    <img src="https://hrzhyyn.sinopec.com/irj/portal/favicon.ico" alt="">
+                    <div>
+                        <div class="site-name">人力资源信息管理系统</div>
+                        <div class="site-desc">人力资源信息管理系统</div>
+                    </div>
+                </a>
+            </div>
+            <div class="site-item">
+                <a href="http://10.190.140.135:1100" target="_blank">
+                    <img src="http://10.190.140.135:1100/favicon.ico" alt="">
+                    <div>
+                        <div class="site-name">爱题知识训练系统</div>
+                        <div class="site-desc">爱题知识训练系统</div>
+                    </div>
+                </a>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- 第十一层网址导航 -->
+    <section class="category" id="floor_11">
+        <div class="category-header">
+            <h5>11 信息运维</h5>
+        </div>
+        <div class="category-content">
+            <div class="site-item">
+                <a href="http://10.190.1.67/" target="_blank">
+                    <img src="https://www.360.cn/favicon.ico" alt="">
+                    <div>
+                        <div class="site-name">360天擎</div>
+                        <div class="site-desc">中国石化企业内网杀毒软件</div>
+                    </div>
+                </a>
+            </div>
+            <div class="site-item">
+                <a href="http://10.190.31.89/" target="_blank">
+                    <img src="http://www.sinopecnews.com.cn/favicon.ico" alt="">
+                    <div>
+                        <div class="site-name">网络准入控制系统</div>
+                        <div class="site-desc">中国石化网络准入控制系统</div>
+                    </div>
+                </a>
+            </div>
+            <div class="site-item">
+                <a href="http://idm.sinopec.com/" target="_blank">
+                    <img src="http://www.sinopecnews.com.cn/favicon.ico" alt="">
+                    <div>
+                        <div class="site-name">统一身份管理</div>
+                        <div class="site-desc">AD账号密码修改个人企业身份信息查询</div>
+                    </div>
+                </a>
+            </div>
+            <div class="site-item">
+                <a href="http://ids.sinopec.com" target="_blank">
+                    <img src="http://ids.sinopec.com/favicon.ico" alt="">
+                    <div>
+                        <div class="site-name">零信任认证中心</div>
+                        <div class="site-desc">中国石化零信任认证中心</div>
+                    </div>
+                </a>
+            </div>
+            <div class="site-item">
+                <a href="https://newits.sinopec.com/#/newportal" target="_blank">
+                    <img src="https://newits.sinopec.com/#/newportal/favicon.ico" alt="">
+                    <div>
+                        <div class="site-name">一体化运维门户</div>
+                        <div class="site-desc">中国石化一体化运维护服务门</div>
+                    </div>
+                </a>
+            </div>
+            <div class="site-item">
+                <a href="http://10.190.1.46/maintain/login.jsp" target="_blank">
+                    <img src="http://10.190.1.46/maintain/login.jsp/favicon.ico" alt="">
+                    <div>
+                        <div class="site-name">湖南分公司运维平台</div>
+                        <div class="site-desc">湖南分公司运维平台</div>
+                    </div>
+                </a>
+            </div>
+            <div class="site-item">
+                <a href="https://console.m.sinopec.com/" target="_blank">
+                    <img src="http://www.sinopecnews.com.cn/favicon.ico" alt="">
+                    <div>
+                        <div class="site-name">石化通</div>
+                        <div class="site-desc">石化通企业内部沟通软件</div>
+                    </div>
+                </a>
+            </div>
+            <div class="site-item">
+                <a href="" target="_blank">
+                    <img src="" alt="">
+                    <div>
+                        <div class="site-name">企业DNS服务器</div>
+                        <div class="site-desc">10.54.173.26；10.54.173.27</div>
+                    </div>
+                </a>
+            </div>
+
+        </div>
+    </section>
+    <!-- 第十二层网址导航 -->
+    <section class="category" id="floor_12">
+        <div class="category-header">
+            <h5>12 企业官网</h5>
+        </div>
+        <div class="category-content">
+            <div class="site-item">
+                <a href="http://www.sinopec.com" target="_blank">
+                    <img src="http://www.sinopecnews.com.cn/favicon.ico" alt="">
+                    <div>
+                        <div class="site-name">中国石化集团</div>
+                        <div class="site-desc">中国石化集团公司官网</div>
+                    </div>
+                </a>
+            </div>
+            <div class="site-item">
+                <a href="http://www.sinopecnews.com.cn/" target="_blank">
+                    <img src="http://www.sinopecnews.com.cn/favicon.ico" alt="">
+                    <div>
+                        <div class="site-name">石化新闻网</div>
+                        <div class="site-desc">中国石化新闻网</div>
+                    </div>
+                </a>
+            </div>
+            <div class="site-item">
+                <a href="https://www.sinopecsales.com/" target="_blank">
+                    <img src="https://www.sinopecsales.com/favicon.ico" alt="">
+                    <div>
+                        <div class="site-name">中国石化网上营业厅</div>
+                        <div class="site-desc">中国石化加油卡网上营业厅</div>
+                    </div>
+                </a>
+            </div>
+            <div class="site-item">
+                <a href="http://www.ejoy365hk.com" target="_blank">
+                    <img src="http://www.ejoy365hk.com/favicon.ico" alt="">
+                    <div>
+                        <div class="site-name">易捷国际网上商城</div>
+                        <div class="site-desc">中国石化易捷国际网上商城</div>
+                    </div>
+                </a>
+            </div>
+            <div class="site-item">
+                <a href="http://www.sinopec.com/listco/index.shtml" target="_blank">
+                    <img src="http://www.sinopecnews.com.cn/favicon.ico" alt="">
+                    <div>
+                        <div class="site-name">中国石化股份有限公司</div>
+                        <div class="site-desc">中国石化股份有限公司</div>
+                    </div>
+                </a>
+            </div>
+
+        </div>
+    </section>
+
+
+
+
+
+</main>
+
+<footer>
+    <div class="container">
+        <p>© 2025 LUCESTUDIO All Rights Reserved 车车工作室 </p>
+    </div>
+</footer>
+
+<script>
+    // 导航菜单点击效果
+    const navLinks = document.querySelectorAll('.nav-menu a');
+    navLinks.forEach(link => {
+        link.addEventListener('click', function() {
+            navLinks.forEach(l => l.classList.remove('active'));
+            this.classList.add('active');
+        });
+    });
+
+    // 搜索功能
+    const searchInput = document.getElementById('searchInput');
+    searchInput.addEventListener('keyup', function(e) {
+        if (e.key === 'Enter') {
+            const query = this.value.trim();
+            if (query) {
+                // 在实际应用中，这里应该执行搜索逻辑
+                alert(`正在搜索: ${query}`);
+                // window.location.href = `/search?q=${encodeURIComponent(query)}`;
+            }
+        }
+    });
+
+    // 滚动时高亮当前可见的分类
+    window.addEventListener('scroll', function() {
+        const categories = document.querySelectorAll('.category');
+        let currentCategoryId = '';
+
+        categories.forEach(category => {
+            const rect = category.getBoundingClientRect();
+            if (rect.top <= 100 && rect.bottom >= 100) {
+                currentCategoryId = category.id;
+            }
+        });
+
+        if (currentCategoryId) {
+            navLinks.forEach(link => {
+                link.classList.remove('active');
+                if (link.getAttribute('href') === `#${currentCategoryId}`) {
+                    link.classList.add('active');
+                }
+            });
+        }
+    });
+</script>
+</body>
+</html>
